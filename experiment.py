@@ -57,7 +57,7 @@ def func_luck(name, word, player_guess_word, count): #изменил чуть п
 
     print(f"{name} у вас {count} баллов")
 
-    if "_" not in player_guess_word:
+    if "_" not in player_guess_word: #если _ нету в player_guess_word то выводится print, если есть то цикл повторяется до момента пока не останется _
         print(player_guess_word)
         is_word_true = True
 
