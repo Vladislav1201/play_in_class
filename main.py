@@ -1,6 +1,5 @@
 import random
 
-
 def player_one(): #ввожу и проверяю первого игрока
     while True:
         name_one = input("Введите имя первого игрока: ").capitalize()
@@ -31,7 +30,8 @@ def func_luck(name, count): #изменил чуть программу.
     загаданному слову, если да то выводиья что угалали слово,
     если букву то пишу что букву угадали, если нет,то пишу что
     нет такой буквы и проверяю есть ли подчеркивания"""
-    print(f"{name} введите вашу букву или попробуйте угадать слово")
+
+    print(f"{name} - введите вашу букву или попробуйте угадать слово: ")
     letter = input()
 
     if letter == word:
@@ -42,21 +42,26 @@ def func_luck(name, count): #изменил чуть программу.
 
     if letter in word:
         print(f"{name} верно, есть такая буква")
+        #print(player_guess_word)
         count += 100
+        print(f"У вас {count} баллов")
         for i in range(len(word)):
             if word[i] == letter:
                 player_guess_word[i] = letter
-                print(player_guess_word)
+                print(f"{player_guess_word}"
+                      f"\n")
     else:
-        print(f"{name} увы но такой буквы нету")
-        print(player_guess_word)
+        print(f"{name} - увы но такой буквы нету")
         count = count - 10
+        print(f"У вас {count} баллов")
+        print(f"{player_guess_word}"
+              f"\n")
 
     if "_" not in player_guess_word:
         print(f"{name} у вас {count} баллов")
-        print(f"Слово '{word}' угаданно")
+        print(f"Слово '{word}' угаданно. {name} - вы победитель!")
         return count, True
-    print(f"{name} у вас {count} баллов")
+    #print(f"{name} у вас {count} баллов")
 
     return count, False
 
@@ -69,22 +74,31 @@ def choise_words(words):
     clue = word_split[1].strip()
     return word, clue
 
-
-word, clue = choise_words("words.txt")
-print("Подсказка:", clue)
-
-"""пока слово объявлено так, потом вывожу строчку с колисеством пробелов равную длинне загаданного слова
-объявляю трех игроков, красиво приветсвую их и пишу цикл который выполняется пока есть незаполненные нижние подчеркивания в строке"""
-
-print(f"В загададаном слове {len(word)} букв(ы)")
-player_guess_word = ['_'] * len(word)
-print(f"Загаданное слово: {player_guess_word}")
+print("Приветствуем вас на игре 'Поле Чудес'. В игре принимают участие 3 игрока."
+      "\nДля всех игроков выводится подсказка с описанием слова, которое нужно отгадать."
+      "\nКаждый игрок по очереди называет букву. Если буква в слове есть, "
+      "\nто она появляется под соответсвующим номером в загаданном слове и игроку начисляются баллы."
+      "\nЕсли буквы нету, то баллы отнимаются. Побеждает тот кто назовет слове верно."
+      "\nПриятной игры!"
+      "\n")
 
 name_player_one = player_one()
 name_player_two = player_two()
 name_player_three = player_three()
 all_names = [name_player_one, name_player_two, name_player_three]
-print(f"Под аплодисменты зрительного зала, тройка игроков в студию: {name_player_one}, {name_player_two}, {name_player_three}")
+print(f"Приглашаем к столу наших игроков: {name_player_one}, {name_player_two}, {name_player_three}."
+      f"\n")
+
+
+word, clue = choise_words("words.txt")
+print(f"Задание на игру: "
+      f"\n{clue}")
+
+print(f"В данном слове {len(word)} букв(ы)")
+player_guess_word = ['_'] * len(word)
+print(f"Загаданное слово: {player_guess_word}"
+      f"\n")
+
 
 count_one = count_two = count_three = 0
 is_game_over = False
@@ -100,6 +114,5 @@ while not is_game_over:
     if game_over:
         break
 
-
-
-print("От первого канала подарки тройке игроков в студию")
+print(f"{name_player_one}, {name_player_two}, {name_player_three} спасибо вам за участие в игре!")
+print("Подарки для игроков в студию!")
