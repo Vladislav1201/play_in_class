@@ -121,7 +121,7 @@ while not is_game_over:
 
 
 if tries >= max_tries:
-    print('Попытки закончились, игроки, вы проиграли')
+    print('Попытки закончились, игроки, вы проиграли.')
 else:
     determine_winner(count_one, count_two, count_three)
 
