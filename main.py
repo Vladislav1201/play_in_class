@@ -1,28 +1,12 @@
 import random
 
-def player_one():  # ввожу и проверяю первого игрока
+def player_one(order):  # ввожу и проверяю первого игрока
     while True:
-        name_one = input("Введите имя первого игрока: ").capitalize()
+        name_one = input(f"Игрок {order} назовите свое имя: ").capitalize()
         if name_one.isalpha():
             return name_one
         else:
             print("Некорректное имя первого игрока, введите повторно")
-
-def player_two():  # ввод и проверка для втрого игрока
-    while True:
-        name_two = input("Введите имя второго игрока: ").capitalize()
-        if name_two.isalpha():
-            return name_two
-        else:
-            print("Некорректное имя второго игрока, введите повторно")
-
-def player_three():  # ввод и проверка для третьего игрока
-    while True:
-        name_three = input("Введите имя третьего игрока: ").capitalize()
-        if name_three.isalpha():
-            return name_three
-        else:
-            print("Некорректное имя третьего игрока, введите повторно")
 
 def guess_word_func(name, count, word, player_guess_word):  # функция проверяющая введенные буквы
     while True:
@@ -88,9 +72,12 @@ def determine_winner(count_one, count_two, count_three):
         print('Победила дружба')
 
 
-name_player_one = player_one()
-name_player_two = player_two()
-name_player_three = player_three()
+print("Интерактивная игра 'Поле Чудес! Авторы Алексей и Владислав.'")
+
+
+name_player_one = player_one(1)
+name_player_two = player_one(2)
+name_player_three = player_one(3)
 
 
 print("\nПриветствуем вас на игре 'Поле Чудес'. В игре принимают участие 3 игрока."
